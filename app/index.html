@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Welcome to my blog!</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+<!-- Below is just a sample of my index.html page -->
+
+
+<div class="maincontain">
+
+    <form action="" id="newpost">
+        <section class="zero">
+            <code>Welcome To My Blog!</code>
+
+            <div id="title_a">
+                <input type="text" name="blog_title" class="blog_title" placeholder="put Title here..."/>
+                <br/>
+            </div>
+
+              <div id="author_b">
+                    <input type="text" class="author_name" name="author_name" type="text" placeholder="put Author here..."><br>
+              </div>
+        </section>
+
+            <div class="hero-unit">
+                 <h1>Post Content</h1>
+            
+                  <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
+            </div>
+
+        <section class="Tags">
+                <div id="alpha2">
+                    <input id="tagsinput" type="text" placeholder="put Tags here...">
+                    <input id="createpost" type="submit" value="submit_post"/>
+                </div>
+        </section>
+    </form>    
+
+        <div class="box1">
+            <div class="submitted_list"></div>
+        </div>
+</div>
+<!-- The Template Dump Site -->
+<!-- <div id="submitted_list"></div> -->
+ 
+<!-- My Handlebars Template -->
+<script type="text/x-handlebars-template" id="blog_template">
+    {{#each post}}
+        {{#if read}}
+        <li class="read">
+            {{else}}
+        <li>
+            {{/if}}
+                <a id="{{ _id }}" href="">{{ name }}</a> <span>X</span>
+        </li>
+      {{/each}}
+</script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/handlebars/handlebars.min.js"></script>
+    <script src="../bower_components/backbone/backbone.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/model.js"></script>
+        <script src="scripts/view.js"></script>
+        <script src="scripts/blogrouter.js"></script>
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
