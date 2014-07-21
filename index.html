@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Welcome to my blog!</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="styles/vendor.css">
+
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="scripts/vendor/modernizr.js"></script>
+  </head>
+  <body>
+<!-- Below is just a sample of my index.html page -->
+
+
+<div class="maincontain">
+
+    <form action="" id="newpost">
+        <section class="zero">
+            <code>Welcome To My Blog!</code>
+
+            <div id="title_a">
+                <input type="text" name="blog_title" class="blog_title" placeholder="put Title here..."/>
+                <br/>
+            </div>
+
+              <div id="author_b">
+                    <input type="text" class="author_name" name="author_name" type="text" placeholder="put Author here..."><br>
+              </div>
+        </section>
+
+            <div class="hero-unit">
+                 <h1>Post Content</h1>
+            
+                  <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
+            </div>
+
+        <section class="Tags">
+                <div id="alpha2">
+                    <input id="tagsinput" type="text" placeholder="put Tags here...">
+                    <input id="createpost" type="submit" value="submit_post"/>
+                </div>
+        </section>
+    </form>    
+
+        <div class="box1">
+            <div class="submitted_list"></div>
+        </div>
+</div>
+<!-- The Template Dump Site -->
+<!-- <div id="submitted_list"></div> -->
+ 
+<!-- My Handlebars Template -->
+<script type="text/x-handlebars-template" id="blog_template">
+    {{#each post}}
+        {{#if read}}
+        <li class="read">
+            {{else}}
+        <li>
+            {{/if}}
+                <a id="{{ _id }}" href="">{{ name }}</a> <span>X</span>
+        </li>
+      {{/each}}
+</script>
+
+    <script src="scripts/vendor.js"></script>
+
+        <script src="scripts/main.js"></script>
+</body>
+</html>
