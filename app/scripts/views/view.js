@@ -13,7 +13,7 @@ var SubmittedBlogView = Backbone.View.extend ({
   },
 
   render: function () {
-    var template = Handlebars.compile($('#blog_items').html());
+    var template = Handlebars.compile($('#blog_template').html());
     var rendered = template({ posts: this.collection.toJSON() });
     this.$el.html(rendered);
   },
@@ -33,6 +33,4 @@ var SubmittedBlogView = Backbone.View.extend ({
   },
 
   removePost: function () {}
-
-
 });

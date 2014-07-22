@@ -14,7 +14,7 @@ var BlogRouter = Backbone.Router.extend({
   },
 
   // My edit screen
-  // Loads a screen while editing the specific whiskey from the id passed in the url (:id)
+  // Loads a screen while editing the specific blog post from the id passed in the url (:id)
   edit: function (id) {
     new PostEditView({ postid: id, collection: submitted_list });
   }

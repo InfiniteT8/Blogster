@@ -25,53 +25,51 @@
 <!-- Below is just a sample of my index.html page -->
 
 
-<div class="maincontain">
+    <div class="maincontain">
+        <form action="" id="newpost">
+            <section class="zero">
+                <code>Welcome To My Blog!</code>
 
-    <form action="" id="newpost">
-        <section class="zero">
-            <code>Welcome To My Blog!</code>
-
-            <div id="title_a">
-                <input type="text" name="blog_title" class="blog_title" placeholder="put Title here..."/>
-                <br/>
-            </div>
-
-              <div id="author_b">
-                    <input type="text" class="author_name" name="author_name" type="text" placeholder="put Author here..."><br>
-              </div>
-        </section>
-
-            <div class="hero-unit">
-                 <h1>Post Content</h1>
-                  <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
-            </div>
-
-        <section class="Tags">
-                <div id="alpha2">
-                    <input id="tagsinput" type="text" placeholder="put Tags here...">
-                    <input id="createpost" type="submit" value="submit_post"/>
+                <div id="title_a">
+                    <input type="text" name="blog_title" class="blog_title" placeholder="put Title here..."/>
+                    <br/>
                 </div>
-        </section>
-    </form>    
 
-        <div class="box1">
-            <div class="submitted_list"></div>
-        </div>
-</div>
-<!-- The Template Dump Site -->
-<!-- <div id="submitted_list"></div> -->
+                <div id="author_b">
+                        <input type="text" class="author_name" name="author_name" type="text" placeholder="put Author here..."><br>
+                </div>
+            </section>
+
+                <div class="hero-unit">
+                     <h1>Post Content</h1>
+                      <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
+                </div>
+
+            <section class="Tags">
+                    <div id="alpha2">
+                        <input id="tagsinput" type="text" placeholder="put Tags here...">
+                        <input id="createpost" type="submit" value="submit_post"/>
+                    </div>
+            </section>
+        </form>    
+
+            <div class="box1">
+                <div class="submitted_list"></div>
+            </div>
+    </div>
  
 <!-- My Handlebars Template -->
 <script type="text/x-handlebars-template" id="blog_template">
-    {{#each post}}
-        {{#if read}}
-        <li class="read">
-            {{else}}
-        <li>
-            {{/if}}
-                <a id="{{ _id }}" href="">{{ name }}</a> <span>X</span>
-        </li>
-      {{/each}}
+        {{#each posts}}
+            <li>
+                <div class="delete"><span>X</span></div>
+                <a href="#" id="{{_id}}">{{ name }}</a>
+                <p>{{ description }}</p>
+                <small>{{ author }}</small>
+                <small>{{ date }}</small>
+                <a href="#">{{ tags }}</a>
+            </li>
+        {{/each}}
 </script>
 
     <!-- build:js scripts/vendor.js -->
