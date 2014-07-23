@@ -1,17 +1,19 @@
-var Blog = Backbone.Model.extend({
+var Blog = Parse.Object.extend({
 
-  idAttribute: '_id',
+	className: "BlogPost",
+  idAttribute: 'objectId',
 
   defaults: {
     name: '',
     description: '',
     author: '',
+    tags:[],
     read: false
   }
 
 });
 
-var BlogCollection = Backbone.Collection.extend ({
+var BlogCollection = Parse.Collection.extend ({
   model: Blog,
-  url: 'http://tiy-atl-fe-server.herokuapp.com/collections/TerryBlackJS'
+  // url: 'http://tiy-atl-fe-server.herokuapp.com/collections/TerryBlackJS'
 });

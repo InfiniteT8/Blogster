@@ -3,13 +3,14 @@ var SubmittedListView = Backbone.View.extend ({
   el: '.submitted_list', //sends data into defined html element.
 
   events: {
-    'click li a' : 'toggleRead',
+    'click .toggleRead' : 'toggleRead',
     'click li span' : 'removepost'
   },
 
   initialize: function () {
     this.render();
     this.collection.on('change', this.render, this);
+    this.collection.on('add',this.render, this);
   },
 
   render: function () {
@@ -24,8 +25,9 @@ var SubmittedListView = Backbone.View.extend ({
     var item_clicked = $(event.target);
     var post_id = item_clicked.attr('id');
     var post = this.collection.get(post_id);
+    var read = post.get('read');
 
-    if (item_clicked.parent().hasClass('read')) {
+    if (read) {
       post.set({ read: false }).save();
     } else {
       post.set({ read: true }).save();

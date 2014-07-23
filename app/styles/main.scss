@@ -9,10 +9,11 @@ body {
   color: #333;
 }
 
+
+
 .maincontain {
     width: 86%;
     margin:0 auto;
-    height:960px;
     border:solid 1px;
     background-color:#E6E6DC;
 }
@@ -137,7 +138,6 @@ textarea.postform{
   margin-left: 190px;
   height: 100px;
   width: 700px;
-  border: 3px solid;
 }
 
 .box2 {
@@ -161,16 +161,38 @@ textarea.postform{
   padding-top:8px;
   margin-top:18px;
 }
-
+.liststyle li {
+  decoration:none;
+}
 ul.submitted_list li {
   margin-bottom: 25px;
+  width: 600px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color:#6e6;
+  text-decoration:none;
 }
 
+button.delete {
+   margin-top: -39px;
+   float: right;
+   background-color: #BA5D62;
+ }
+ 
 .read a {
   text-decoration: line-through;
   color: grey;
 }
-
+.actions {
+     float: right;
+     margin-top: -25px;
+     margin-right: 10px;
+     margin-bottom: 10px;
+     button {
+       background-color: grey;
+     }
+}     
 .hero-unit {
   margin: 50px auto 0 auto;
   width: 600px;
@@ -184,5 +206,17 @@ ul.submitted_list li {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+  }
+}
+
+.titlestyle a {
+  background-color:#6e6;
+  border-radius: 6px;
+  h1 {
+    border-top: 2px solid blueviolet;
+    border-bottom: 2px solid blue;
+    background-color: wheat;
+    font-size: 30px;
+    color: #386f8a;
   }
 }

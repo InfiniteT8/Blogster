@@ -5,6 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>Welcome to my blog!</title>
+    <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -55,21 +56,42 @@
 
             <div class="box1">
                 <div class="submitted_list"></div>
+                <div class="submitted_edit"></div>
             </div>
     </div>
  
 <!-- My Handlebars Template -->
 <script type="text/x-handlebars-template" id="blog_template">
         {{#each posts}}
-            <li>
+            <li class="liststyle">
                 <div class="delete"><span>X</span></div>
-                <a href="#" id="{{_id}}">{{ name }}</a>
-                <p>{{ description }}</p>
-                <small>{{ author }}</small>
-                <small>{{ date }}</small>
-                <a href="#">{{ tags }}</a>
+                <div class="titlestyle">
+                    <a href="#" id="{{_id}}"><h1>{{ name }}</h1></a>
+                </div>
+                            {{#if read}}
+                <button name="read" id="{{ _id }}" class="read">Readit</button>
+            {{/if}}
+                    <p>{{ description }}</p>
+                    <small>{{ author }}</small>
+                    <a href="#">{{ tags }}</a>
+                <div class="actions">
+
+                  <button class="toggleRead" id="{{objectId}}">&#x2713;</button>
+                  <button class="edit" id="{{objectId}}">&#x270e;</button>
+                </div>
             </li>
         {{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="single_post">
+      <h3>Editing</h3><br/>
+      <form action="" id="updateForm">
+        <input type="text" value="{{ name }}" class="edit_post_name" />
+        <textarea class="edit_post_desc" name="" id="" cols="30" rows="5">{{ description }}</textarea>
+        <input type="submit" value="Update/Cancel" />
+        <input type="hidden" value="{{ objectId }}" class="post_id" />
+      </form>
+      <button class="delete">Delete</button>
 </script>
 
     <!-- build:js scripts/vendor.js -->
@@ -84,6 +106,7 @@
         <!-- build:js scripts/main.js -->
         <script src="scripts/model.js"></script>
         <script src="scripts/view.js"></script>
+        <script src="scripts/edit_view.js"></script>
         <script src="scripts/blogrouter.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->

@@ -1,3 +1,5 @@
+Parse.initialize("GOjCCxKmvJmesh3NYbJbYWNuJmIKqhEl3PraAbGq", "wLEHDYQxMcK4UoaY1xWFEmyt4PSs42X5MgYSQ71p");
+
 // Create an instance of my Collection
 var submitted_list = new BlogCollection();
 
@@ -15,14 +17,17 @@ $('#newpost').on('submit', function (event) {
   event.preventDefault();
 
   // Creates an instance from my blog model.
+  //temp because of refresh method.
   var temp_post = new Blog({
     name: $('.blog_title').val(),
     author: $('.author_name').val(),
-    description: $('.postform').val()
+    description: $('.postform').val(),
+    tags: $('#tagsinput').val(),
   });
 
   //adds new blog post to my collection
-  submitted_list.add(temp_post).save();
+  submitted_list.add(temp_post);
+  temp_post.save();
 
   // Clears form of previously entered data
   $(this).trigger('reset');
