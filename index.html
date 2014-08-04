@@ -5,6 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>Welcome to my blog!</title>
+    <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="styles/vendor.css">
@@ -17,54 +18,72 @@
 <!-- Below is just a sample of my index.html page -->
 
 
-<div class="maincontain">
+    <div class="maincontain">
+        <form action="" id="newpost">
+            <section class="zero">
+                <code>Welcome To My Blog!</code>
 
-    <form action="" id="newpost">
-        <section class="zero">
-            <code>Welcome To My Blog!</code>
-
-            <div id="title_a">
-                <input type="text" name="blog_title" class="blog_title" placeholder="put Title here..."/>
-                <br/>
-            </div>
-
-              <div id="author_b">
-                    <input type="text" class="author_name" name="author_name" type="text" placeholder="put Author here..."><br>
-              </div>
-        </section>
-
-            <div class="hero-unit">
-                 <h1>Post Content</h1>
-            
-                  <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
-            </div>
-
-        <section class="Tags">
-                <div id="alpha2">
-                    <input id="tagsinput" type="text" placeholder="put Tags here...">
-                    <input id="createpost" type="submit" value="submit_post"/>
+                <div id="title_a">
+                    <input type="text" name="blog_title" class="blog_title" placeholder="put Title here..."/>
+                    <br/>
                 </div>
-        </section>
-    </form>    
 
-        <div class="box1">
-            <div class="submitted_list"></div>
-        </div>
-</div>
-<!-- The Template Dump Site -->
-<!-- <div id="submitted_list"></div> -->
+                <div id="author_b">
+                        <input type="text" class="author_name" name="author_name" type="text" placeholder="put Author here..."><br>
+                </div>
+            </section>
+
+                <div class="hero-unit">
+                     <h1>Post Content</h1>
+                      <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
+                </div>
+
+            <section class="Tags">
+                    <div id="alpha2">
+                        <input id="tagsinput" type="text" placeholder="put Tags here...">
+                        <input id="createpost" type="submit" value="submit_post"/>
+                    </div>
+            </section>
+        </form>    
+
+            <div class="box1">
+                <div class="submitted_list"></div>
+                <div class="submitted_edit"></div>
+            </div>
+    </div>
  
 <!-- My Handlebars Template -->
 <script type="text/x-handlebars-template" id="blog_template">
-    {{#each post}}
-        {{#if read}}
-        <li class="read">
-            {{else}}
-        <li>
+        {{#each posts}}
+            <li class="liststyle">
+                <div class="delete"><span>X</span></div>
+                <div class="titlestyle">
+                    <a href="#" id="{{_id}}"><h1>{{ name }}</h1></a>
+                </div>
+                            {{#if read}}
+                <button name="read" id="{{ _id }}" class="read">Readit</button>
             {{/if}}
-                <a id="{{ _id }}" href="">{{ name }}</a> <span>X</span>
-        </li>
-      {{/each}}
+                    <p>{{ description }}</p>
+                    <small>{{ author }}</small>
+                    <a href="#">{{ tags }}</a>
+                <div class="actions">
+
+                  <button class="toggleRead" id="{{objectId}}">&#x2713;</button>
+                  <button class="edit" id="{{objectId}}">&#x270e;</button>
+                </div>
+            </li>
+        {{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="single_post">
+      <h3>Editing</h3><br/>
+      <form action="" id="updateForm">
+        <input type="text" value="{{ name }}" class="edit_post_name" />
+        <textarea class="edit_post_desc" name="" id="" cols="30" rows="5">{{ description }}</textarea>
+        <input type="submit" value="Update/Cancel" />
+        <input type="hidden" value="{{ objectId }}" class="post_id" />
+      </form>
+      <button class="delete">Delete</button>
 </script>
 
     <script src="scripts/vendor.js"></script>
