@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>Welcome to my blog!</title>
     <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="styles/vendor.css">
@@ -17,6 +18,19 @@
   <body>
 <!-- Below is just a sample of my index.html page -->
 
+    <header>
+        <ul>
+          <li><a href="/#">Home</a></li>
+          <div class="userfield activeuserActions"></div>
+          <li><a href="/#"><li class='register'>Register</a></li>
+          <li class="login activeuserActions"><a href="/#">Login</a></li>
+          <li class="profile_link activeuserActions"><a href="/#">View Profile</a></li>
+          <li><a class="activeuserActions" href="/#add">Add A Post</a></li>
+          <div class="logout activeuserActions"><button>Log Out</button></div>
+        </ul>
+    </header>
+    
+    <!-- <div class="Andre interview">OOPH!</div> -->
 
     <div class="maincontain">
         <form action="" id="newpost">
@@ -35,7 +49,7 @@
 
                 <div class="hero-unit">
                      <h1>Post Content</h1>
-                      <textarea name="title" class="postform" cols="30" rows="10" placeholder="POPO"></textarea>
+                      <textarea name="title" class="postform" cols="30" rows="10" placeholder="tell me your story"></textarea>
                 </div>
 
             <section class="Tags">
@@ -44,48 +58,84 @@
                         <input id="createpost" type="submit" value="submit_post"/>
                     </div>
             </section>
-        </form>    
-
+        </form> 
+    </div>
             <div class="box1">
                 <div class="submitted_list"></div>
-                <div class="submitted_edit"></div>
+                <div class="submitted_edit">
+                <div class="form_container"></div>
+                </div>
             </div>
-    </div>
- 
+
+    <div class="blog_cont"></div>
+
 <!-- My Handlebars Template -->
-<script type="text/x-handlebars-template" id="blog_template">
-        {{#each posts}}
-            <li class="liststyle">
-                <div class="delete"><span>X</span></div>
-                <div class="titlestyle">
-                    <a href="#" id="{{_id}}"><h1>{{ name }}</h1></a>
-                </div>
-                            {{#if read}}
-                <button name="read" id="{{ _id }}" class="read">Readit</button>
-            {{/if}}
-                    <p>{{ description }}</p>
-                    <small>{{ author }}</small>
-                    <a href="#">{{ tags }}</a>
-                <div class="actions">
+    <script type="text/x-handlebars-template" id="blog_template">
+            {{#each posts}}
+                <article class="liststyle">
+                    <p><time>{{date}}</time></p>
+                        <div class="titlestyle">
+                            <a href="#" id="{{_id}}"><h1>{{ name }}</h1></a>
+                        </div>
+                    {{#if read}}
+                        <button class="delete">Delete</button>
+                        <button name="read" id="{{ _id }}" class="read">Readit</button>
+                    {{/if}}
 
-                  <button class="toggleRead" id="{{objectId}}">&#x2713;</button>
-                  <button class="edit" id="{{objectId}}">&#x270e;</button>
-                </div>
-            </li>
-        {{/each}}
-</script>
+                            <p>{{ description }}</p>
+                            <small>{{ author }}</small>
+                            {{#if tags}}
+                                <a href="#"><small class='tags'>Tags: {{tags}}</small></a>
+                            {{/if}}
+                        <div class="actions">
+                          <button class="toggleRead" id="{{objectId}}">&#x2713;</button>
+                          <button class="clickedit" id="{{objectId}}">&#x270e;</button>
+                        </div>
+                </article>
+            {{/each}}
+    </script>
 
-<script type="text/x-handlebars-template" id="single_post">
+
+    <script type="text/x-handlebars-template" id="single_post">
       <h3>Editing</h3><br/>
-      <form action="" id="updateForm">
-        <input type="text" value="{{ name }}" class="edit_post_name" />
-        <textarea class="edit_post_desc" name="" id="" cols="30" rows="5">{{ description }}</textarea>
-        <input type="submit" value="Update/Cancel" />
-        <input type="hidden" value="{{ objectId }}" class="post_id" />
-      </form>
-      <button class="delete">Delete</button>
+        <form action="" id="updateForm">
+            <p class='date'><time>{{date}}</time></p>
+            {{#if tags}}
+              <a href="#"><small>Tags:{{tags}}</small></a>
+            {{/if}}
+            <input type="text" value="{{ name }}" class="edit_post_name" />
+            <textarea class="edit_post_desc" name="" id="" cols="30" rows="5">{{ description }}</textarea>
+            <input type="submit" value="Update/Cancel" />
+            <button class="delete">Delete</button>
+            <input type="hidden" value="{{ objectId }}" class="post_id"/>
+        </form>
+    </script>
+
+    
+<script type="text/x-handlebars-template" id="myblog_user">
+    <div class="usermain">
+        <div class="hero-unit2">
+          <h2>Site Under Construction!</h2>
+            <form action="" class="signupform" id="regUser">
+                Username: <input type="text" name="username" id="regname" placeholder="Username" required="yes"> <br>
+                Password: <input type="password" name="password" id="regpassword" placeholder="Password" required="yes"> <br>
+                          <input type="password" name="password2" placeholder="Confirm password" /> <br>
+                    email:<input type="email" name="email" id="regemail" placeholder="ianyad@exmp.com" required="yes"> <br>
+                          <input type="submit" class="regUser" value="Register">
+            </form>
+
+            <form action="" class="signInform" id="logmein">
+                <h2>Log Me In!</h2>   
+                Username: <input type="username" name="username" id="username" placeholder="Username" required="yes"> <br>
+                Password: <input type="password" name="password" id="password2" placeholder="Password" required="yes"> <br>
+                          <input type="submit" class="logmein" value="Login">
+            </form>
+        </div>
+    </div>
 </script>
 
+        
+    <div id='dbltap'></div>
     <script src="scripts/vendor.js"></script>
 
         <script src="scripts/main.js"></script>
