@@ -1,3 +1,3 @@
 ## Yo, I'm a Readme
 
-You should probably update me so people looking at your code have an idea what it is being used for :)
+Blogster a.k.a Bloglyfe is the first build of a blog that allows anyone to create, update, or delete individual post.
